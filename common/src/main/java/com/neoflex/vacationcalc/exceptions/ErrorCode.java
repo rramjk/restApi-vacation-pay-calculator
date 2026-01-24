@@ -3,7 +3,8 @@ package com.neoflex.vacationcalc.exceptions;
 public enum ErrorCode {
     PARAMETER_OF_REQUEST_IS_MISSING("Обязательный параметр '%s' не указан"),
     PARAMETER_OF_REQUEST_IS_INCORRECT("Параметр '%s' указан некорректно"),
-    PARAMETER_START_DATE_OR_END_DATE_IS_INCORRECT("Значения начала или конца отпуска указаны некорректно")
+    PARAMETER_START_DATE_OR_END_DATE_IS_INCORRECT("Значения начала или конца отпуска указаны некорректно"),
+    CALCULATE_IS_POSSIBLE_FOR_CURRENT_YEAR("Расчет отпускных возможен только на текущий год")
     ;
 
     private final String errorMessage;

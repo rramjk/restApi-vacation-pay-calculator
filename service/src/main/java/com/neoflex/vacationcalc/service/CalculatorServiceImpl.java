@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
+import static com.neoflex.vacationcalc.exceptions.ErrorCode.CALCULATE_IS_POSSIBLE_FOR_CURRENT_YEAR;
 import static com.neoflex.vacationcalc.exceptions.ErrorCode.PARAMETER_START_DATE_OR_END_DATE_IS_INCORRECT;
 
 @Service
@@ -38,6 +39,9 @@ public class CalculatorServiceImpl implements CalculatorService {
     }
 
     private void validateStartDateVacationParam(LocalDate startDate, LocalDate endDate) {
+        if (startDate.getYear() != LocalDate.now().getYear()) {
+            throw new BadRequestException(CALCULATE_IS_POSSIBLE_FOR_CURRENT_YEAR.getErrorMessage());
+        }
         if (endDate != null && startDate.isAfter(endDate)) {
             throw new BadRequestException(PARAMETER_START_DATE_OR_END_DATE_IS_INCORRECT.getErrorMessage());
         }
